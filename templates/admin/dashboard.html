@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AGS Admin Dashboard</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    margin:0;
+    background:#0f0f0f;
+    color:white;
+}
+
+.header{
+    background:#111;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #333;
+}
+
+.header h2{
+    margin:0;
+}
+
+.logout{
+    color:white;
+    text-decoration:none;
+    background:#ff3c3c;
+    padding:8px 15px;
+    border-radius:5px;
+}
+
+.container{
+    padding:30px;
+}
+
+.buttons{
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:10px 20px;
+    margin-right:10px;
+    background:#ff3c3c;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.section{
+    margin-top:30px;
+}
+
+.card{
+    background:#1b1b1b;
+    padding:15px;
+    margin:10px 0;
+    border-radius:6px;
+}
+
+.card:hover{
+    background:#222;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>Awadhya Games Studio Dashboard</h2>
+
+<a class="logout" href="/logout">Logout</a>
+
+</div>
+
+<div class="container">
+
+<div class="buttons">
+
+<a class="btn" href="/add_game">➕ Add Game</a>
+<a class="btn" href="/add_post">✏ Add Blog</a>
+<a class="btn" href="/messages">📩 Messages</a>
+
+</div>
+
+<div class="section">
+
+<h3>🎮 Games</h3>
+
+{% for game in games %}
+
+<div class="card">
+
+<b>{{ game.title }}</b>
+
+<a style="float:right;color:red;" href="/delete_game/{{game.id}}">Delete</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<div class="section">
+
+<h3>📰 Blog Posts</h3>
+
+{% for post in posts %}
+
+<div class="card">
+
+<b>{{ post.title }}</b>
+
+</div>
+
+{% endfor %}
+
+
+<!--Cards -->
+</div>
+<div class="dashboard-cards">
+
+<div class="card">
+<h2>{{ games_count }}</h2>
+<p>Games</p>
+</div>
+
+<div class="card">
+<h2>{{ posts_count }}</h2>
+<p>Blog Posts</p>
+</div>
+
+<div class="card">
+<h2>{{ subs_count }}</h2>
+<p>Subscribers</p>
+</div>
+
+<div class="card">
+<h2>{{ messages_count }}</h2>
+<p>Messages</p>
+</div>
+
+</div>
+
+
+<!--Stats-->
+<div class="stats">
+
+<div class="stat-card">
+<h3>{{games|length}}</h3>
+<p>Total Games</p>
+</div>
+
+<div class="stat-card">
+<h3>{{posts|length}}</h3>
+<p>Total Blog Posts</p>
+
+<h3>Total Games: {{ games_count }}</h3>
+<h3>Total Blog Posts: {{ posts_count }}</h3>
+<h3>Total Subscribers: {{ subs_count }}</h3>
+<h3>Total Messages: {{ messages_count }}</h3>
+
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

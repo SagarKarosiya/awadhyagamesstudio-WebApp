@@ -1,0 +1,15 @@
+<h2>Contact Messages</h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% for m in msgs %}
+
+<div>
+
+<h4>{{ m.name }}</h4>
+
+<p>{{ m.email }}</p>
+
+<p>{{ m.message }}</p>
+
+</div>
+
+{% endfor %}

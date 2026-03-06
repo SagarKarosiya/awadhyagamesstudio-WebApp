@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Awadhya Games Studio</title>
+
+<meta name="description" content="Awadhya Games Studio - Indie game development studio creating PC and mobile games.">
+<meta name="keywords" content="game development, indie games, unreal engine, pc games, android games">
+<meta name="author" content="Sagar Karosiya">
+
+<meta property="og:title" content="Awadhya Games Studio">
+<meta property="og:description" content="Indie Game Development Studio">
+<meta property="og:image" content="/static/images/logo.png">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+<div class="container">
+
+<div class="logo-area">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo-img">
+
+<span class="logo-text">Awadhya Games Studio</span>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="/">Home</a></li>
+<li><a href="/games">Games</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
+<li><a href="/admin">Admin</a></li>
+
+</ul>
+
+</div>
+
+</nav>
+
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+<video autoplay muted loop class="hero-video">
+<source src="{{ url_for('static', filename='videos/hero.mp4') }}" type="video/mp4">
+</video>
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>Awadhya Games Studio</h1>
+
+<p>
+Building immersive worlds with Unreal Engine and AI-driven gameplay.
+</p>
+
+<a href="/games" class="btn btn-primary">
+Explore Our Games
+</a>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURED GAME ================= -->
+
+<section class="featured">
+
+<h2>Featured Game</h2>
+
+{% if featured_game %}
+
+<div class="featured-container">
+
+<img src="{{ url_for('static', filename=game.cover.replace('static/', '')) }}" alt="{{ game.title }}">
+
+<div class="featured-info">
+
+<h3>{{ featured_game.title }}</h3>
+
+<p>{{ featured_game.description }}</p>
+
+<a href="/game/{{ featured_game.id }}" class="btn">
+View Game
+</a>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</section>
+
+
+
+<!-- ================= GAMES SECTION ================= -->
+<section class="games-section">
+
+<h2 class="section-title">Our Games</h2>
+
+<div class="games-grid">
+
+{% for game in games %}
+
+<div class="game-card">
+
+<img src="/{{ game.cover }}" alt="{{ game.title }}">
+
+<div class="game-card-content">
+
+<h3>{{ game.title }}</h3>
+
+<p>{{ game.description[:120] }}...</p>
+
+<a href="/game/{{ game.id }}" class="btn-view">View Game</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT STUDIO ================= -->
+
+<section class="about-section">
+
+<div class="container">
+
+<h2>About Awadhya Games Studio</h2>
+
+<p>
+
+Awadhya Games Studio is an independent game development studio founded by
+<strong>Sagar Karosiya</strong>. The studio focuses on developing immersive
+games for PC and Android platforms using technologies such as
+Unreal Engine and AI-driven systems.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= BLOG SECTION ================= -->
+
+<section class="blog-section">
+
+<h2 class="section-title">Latest Devlogs</h2>
+
+<div class="blog-grid">
+
+{% for post in posts %}
+
+<div class="blog-card">
+
+<h3>{{ post.title }}</h3>
+
+<p>{{ post.content[:120] }}...</p>
+
+<a href="/blog" class="btn btn-secondary">
+Read More
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+<h2>Stay Updated</h2>
+
+<form action="/subscribe" method="POST">
+
+<input type="email" name="email" placeholder="Enter Email" required>
+
+<button type="submit">Subscribe</button>
+
+</form>
+
+</section>
+
+
+<!-- ================= CONTACT CTA ================= -->
+<section class="community">
+
+<h2>Join Our Community</h2>
+
+<p>
+Connect with developers and players.
+</p>
+
+<a href="https://discord.gg/yourserver" class="btn-primary">
+Join Discord
+</a>
+
+</section>
+<!-- ================= CONTACT CTA ================= -->
+
+<section class="contact-section">
+
+<div class="contact-container">
+
+<h2>Contact Us</h2>
+
+<p>
+Interested in collaborations, publishing, or working with Awadhya Games Studio?
+</p>
+
+<a href="/contact" class="btn-contact">
+Send Message
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>© 2026 Awadhya Games Studio</p>
+
+<div class="social">
+
+<a href="#">YouTube</a>
+<a href="#">LinkedIn</a>
+<a href="#">Twitter</a>
+<a href="#">Itch.io</a>
+
+</div>
+
+</footer>
+
+
+</body>
+
+</html>

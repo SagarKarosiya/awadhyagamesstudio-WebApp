@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<section class="team">
+
+<h1>Our Team</h1>
+<div class="logo-area">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo-img">
+
+<span class="logo-text">Awadhya Games Studio</span>
+
+</div>
+
+<div class="team-grid">
+
+<div class="member">
+<img src="/static/images/sagar.jpg">
+<h3>Sagar Karosiya</h3>
+<p>Founder & Game Developer</p>
+</div>
+
+<div class="member">
+<img src="/static/images/dev.jpg">
+<h3>Game Developer</h3>
+<p>Gameplay Programmer</p>
+</div>
+
+<div class="member">
+<img src="/static/images/designer.jpg">
+<h3>Designer</h3>
+<p>3D Artist</p>
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--Image Slider-->
+<div class="game-gallery">
+
+<img src="/{{game.image1}}">
+<img src="/{{game.image2}}">
+<img src="/{{game.image3}}">
+
+</div>
+
+<section class="page-header">
+    
+    <h1>Studio Blog</h1>
+    <p>Development logs and studio updates</p>
+</section>
+
+<section class="blog-section">
+
+<div class="blog-grid">
+
+{% for post in posts %}
+
+<div class="blog-card">
+
+<h3>{{ post.title }}</h3>
+
+<p>{{ post.content[:150] }}...</p>
+
+<a href="/blog" class="btn-view">Read More</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{% endblock %}
