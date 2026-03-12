@@ -83,7 +83,21 @@ def home():
     games = Game.query.order_by(Game.id.desc()).limit(4)
     posts = Blog.query.order_by(Blog.id.desc()).limit(3)
     return render_template("index.html", featured_game=featured_game, games=games, posts=posts)
+# -------------------
+# Admin Create
+# -------------------
+@app.route("/create-admin")
+def create_admin():
 
+    admin = User(
+        username="admin",
+        password="admin123"
+    )
+
+    db.session.add(admin)
+    db.session.commit()
+
+    return "Admin created"
 
 @app.route("/about")
 def about():
