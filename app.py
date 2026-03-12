@@ -26,7 +26,7 @@ def allowed_file(filename):
 app = Flask(__name__)
 app.secret_key = "secret123"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("postgresql://agsdatabase_user:BBPEwiPslj4cUUqFCs9cYSONRuYEAmXM@dpg-d6pd3sh4tr6s73akpf5g-a.singapore-postgres.render.com/agsdatabase")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
@@ -98,6 +98,13 @@ def create_admin():
     db.session.commit()
 
     return "Admin created"
+# -------------------
+# Database migration temperary
+# -------------------
+@app.route("/init-db")
+def init_db():
+    db.create_all()
+    return "Database created"
 
 @app.route("/about")
 def about():
