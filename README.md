@@ -154,8 +154,8 @@ Admin login allows you to upload and manage games.
 Example credentials:
 
 ```
-Username: admin
-Password: admin123
+Username: 
+Password: 
 ```
 
 You can change these credentials in the database.
