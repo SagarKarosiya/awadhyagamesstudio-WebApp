@@ -63,7 +63,8 @@ This project was created as part of building a **professional portfolio and publ
 
 ### Database
 
-* SQLite (Development)
+* SQLite 
+* PostgreSQL (For Deployment)
 
 ### Deployment
 
