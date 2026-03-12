@@ -26,7 +26,13 @@ def allowed_file(filename):
 app = Flask(__name__)
 app.secret_key = "secret123"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("postgresql://agsdatabase_user:BBPEwiPslj4cUUqFCs9cYSONRuYEAmXM@dpg-d6pd3sh4tr6s73akpf5g-a.singapore-postgres.render.com/agsdatabase")
+database_url = os.environ.get("DATABASE_URL")
+
+if database_url and database_url.startswith("postgres://"):
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
