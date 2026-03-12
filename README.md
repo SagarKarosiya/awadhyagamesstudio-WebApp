@@ -8,7 +8,7 @@ This project was created as part of building a **professional portfolio and publ
 
 # 🌐 Live Website
 
-👉 https://your-render-url.onrender.com
+👉 https://awadhyagamesstudio.onrender.com
 
 ---
 
@@ -212,9 +212,9 @@ python app.py
 
 AI & ML Graduate
 Game Developer | Awadhya Games Studio
-
+## Portfolio : https://sagarkarosiya-portfolio.onrender.com
 GitHub
-https://github.com/YOUR_USERNAME
+https://github.com/SagarKarosiya
 
 ---
 
