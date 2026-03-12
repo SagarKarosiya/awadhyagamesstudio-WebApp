@@ -216,11 +216,7 @@ Game Developer | Awadhya Games Studio
 GitHub
 https://github.com/SagarKarosiya
 
----
 
-# 📜 License
-
-This project is open-source and available under the **MIT License**.
 
 ---
 
