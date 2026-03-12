@@ -1,127 +1,268 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>{{ game.title }}</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+width:90%;
+margin:auto;
+margin-top:40px;
+}
+
+/* TOP SECTION */
+
+.top-section{
+display:flex;
+gap:40px;
+align-items:flex-start;
+}
+
+/* COVER IMAGE */
+
+.game-cover{
+width:50%;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* DESCRIPTION */
+
+.description{
+width:50%;
+}
+
+.description h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.description p{
+font-size:18px;
+line-height:1.6;
+color:#ccc;
+}
+
+/* TRAILER */
+
+.trailer{
+margin-top:50px;
+text-align:center;
+}
+
+.trailer iframe{
+width:80%;
+height:450px;
+border:none;
+border-radius:10px;
+}
+
+/* SCREENSHOTS */
+
+.screenshots{
+margin-top:50px;
+text-align:center;
+}
+
+.screenshots img{
+width:250px;
+margin:10px;
+border-radius:8px;
+transition:0.3s;
+}
+
+.screenshots img:hover{
+transform:scale(1.05);
+}
+
+/* TOP BUTTONS */
+
+.top-buttons{
+position:absolute;
+top:20px;
+left:20px;
+z-index:10;
+}
+
+/* BUTTON STYLE */
+
+.nav-btn{
+display:inline-block;
+padding:10px 20px;
+margin-right:10px;
+background:#ff3c00;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.nav-btn:hover{
+background:#ff6a00;
+transform:scale(1.05);
+}
+
+/* BACKGROUND SLIDER */
+
+.bg-slider{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+overflow:hidden;
+}
+
+.bg-slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:opacity 1.5s ease-in-out;
+}
+
+.bg-slide.active{
+opacity:1;
+}
+
+/* DARK OVERLAY */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:-1;
+}
+
+
+</style>
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
-<nav class="navbar">
-
-<h2 class="logo">Awadhya Games Studio</h2>
-
-<ul>
-<li><a href="/">Home</a></li>
-<li><a href="/games">Games</a></li>
-<li><a href="/blog">Blog</a></li>
-</ul>
-
-</nav>
-
-
-<!-- GAME DETAIL -->
-
-<section class="game-detail">
-
-<div class="game-detail-container">
-
-<div class="game-image">
-
-<img src="{{ url_for('static', filename=game.cover.replace('static/', '')) }}" alt="{{ game.title }}">
-
-</div>
-
-
-<div class="game-info">
-
-<h1>{{ game.title }}</h1>
-
-<p class="game-description">
-{{ game.description }}
-</p>
-
-<button class="btn btn-primary" onclick="openTrailer()">
-Watch Trailer
-</button>
-
-<div id="trailerModal" class="trailer-modal">
-
-<div class="trailer-content">
-
-<span class="close" onclick="closeTrailer()">X</span>
-
-<iframe width="100%" height="400"
-src="{{ game.trailer }}"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</div>
-
-<h2>Trailer</h2>
-
-<iframe
-width="100%"
-height="450"
-src="{{ game.trailer }}"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-
-<a href="/games" class="btn btn-secondary">
-Back to Games
-</a>
-
-</div>
-
-</div>
-
-</section>
-<script>
-
-function openTrailer(){
-document.getElementById("trailerModal").style.display="flex"
-}
-
-function closeTrailer(){
-document.getElementById("trailerModal").style.display="none"
-}
-
-</script>
-
-<!--Game Image Slider-->
-<div class="screenshot-gallery">
+    <div class="bg-slider">
 
 {% for shot in game.screenshots %}
 
-<img src="{{ url_for('static', filename=shot.image.replace('static/', '')) }}">
+<div class="bg-slide"
+style="background-image:url('{{ url_for('static', filename='uploads/screenshots/' + shot.image) }}')">
+</div>
 
 {% endfor %}
 
 </div>
 
 
-<!--Game platform Icon -->
-<div class="platforms">
+<nav class="navbar">
 
-<span>PC</span>
-<span>Android</span>
-<span>Steam</span>
+<div class="logo">
+Awadhya Games Studio
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/games">Games</a></li>
+<li><a href="/blog">Blog</a></li>
+
+
+
+</ul>
+
+</nav>
+<div class="container">
+<div class="top-buttons">
+
+
 
 </div>
+<!-- TOP SECTION -->
+
+<h1>{{ game.title }}</h1>
+
+<!-- GAME COVER -->
+<img src="{{ url_for('static', filename='uploads/covers/' + game.cover) }}" width="500">
+
+
+<!-- DESCRIPTION -->
+<p>{{ game.description }}</p>
+
+
+<!-- YOUTUBE TRAILER -->
+
+<h2>Game Trailer</h2>
+
+<iframe width="560" height="315"
+src="{{ game.trailer | replace('watch?v=', 'embed/') }}"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+
+<!-- SCREENSHOTS -->
+
+<h2>Screenshots</h2>
+
+{% for shot in game.screenshots %}
+
+<img src="{{ url_for('static', filename='uploads/screenshots/' + shot.image) }}" width="300">
+
+{% endfor %}
+
+
+<br><br>
+
+<script>
+
+let slides = document.querySelectorAll(".bg-slide");
+
+if(slides.length > 0){
+
+let index = 0;
+
+function changeBackground(){
+
+slides.forEach(slide => slide.classList.remove("active"));
+
+slides[index].classList.add("active");
+
+index++;
+
+if(index >= slides.length){
+index = 0;
+}
+
+}
+
+changeBackground();
+
+setInterval(changeBackground, 5000);
+
+}
+
+</script>
 
 </body>
 </html>

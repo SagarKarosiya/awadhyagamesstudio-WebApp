@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Edit Game</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+margin:0;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px;
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+margin-bottom:20px;
+background:#1b1b1b;
+border:1px solid #333;
+color:white;
+border-radius:5px;
+}
+
+button{
+background:#ff3c3c;
+border:none;
+padding:10px 20px;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e52e2e;
+}
+
+.screenshots{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.screenshots img{
+width:150px;
+border-radius:5px;
+}
+
+.delete{
+color:red;
+font-size:12px;
+display:block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Edit Game</h2>
+
+<form method="POST">
+
+<label>Game Title</label>
+<input type="text" name="title" value="{{game.title}}" required>
+
+<label>Description</label>
+<textarea name="description">{{game.description}}</textarea>
+
+<label>Trailer URL</label>
+<input type="text" name="trailer" value="{{game.trailer}}">
+
+<label>
+<input type="checkbox" name="featured" value="1" {% if game.featured %}checked{% endif %}>
+Featured Game
+</label>
+
+<br><br>
+
+<button type="submit">Update Game</button>
+
+</form>
+
+
+<h3>Add Screenshot</h3>
+
+<form method="POST" action="/add_screenshot/{{game.id}}" enctype="multipart/form-data">
+
+<input type="file" name="image" required>
+
+<button type="submit">Upload Screenshot</button>
+
+</form>
+
+
+<h3>Game Screenshots</h3>
+
+<div class="screenshots">
+
+{% for shot in game.screenshots %}
+
+<div>
+
+<img src="{{ url_for('static', filename='uploads/screenshots/' + shot.image) }}">
+
+<a class="delete" href="/delete_screenshot/{{shot.id}}">Delete</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>

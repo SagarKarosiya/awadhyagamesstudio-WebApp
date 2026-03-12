@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}Awadhya Games Studio{% endblock %}</title>
+
+<meta name="description" content="Indie Game Studio by Sagar Karosiya">
+<meta name="keywords" content="Game Studio, Unreal Engine, Indie Games">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+
+
+
+<header>
+
+<div class="logo-area">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo-img">
+
+<span class="logo-text">Awadhya Games Studio</span>
+
+</div>
+
+<nav class="navbar">
+
+<div class="logo">
+Awadhya Games Studio
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/games">Games</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/about">Studio</a></li>
+<li><a href="/team">Our Team</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+{% block content %}{% endblock %}
+
+<footer>
+
+<div class="footer-container">
+
+<p>© 2026 Awadhya Games Studio</p>
+
+<div class="social">
+
+<a href="#">LinkedIn</a>
+<a href="#">YouTube</a>
+<a href="#">Instagram</a>
+
+</div>
+
+</div>
+
+</footer>
+</body>
+</html>

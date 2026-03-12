@@ -1017,3 +1017,354 @@ text-decoration:none;
 border-radius:6px;
 }
 
+.hero {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+}
+
+.game-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+.game-card:hover .game-card-content {
+    transform: translateY(-10px);
+}
+
+.newsletter {
+    text-align: center;
+    padding: 60px 20px;
+}
+.newsletter input[type="email"] {
+    padding: 12px;
+    width: 250px;
+    border-radius: 30px 0 0 30px;
+    border: none;
+    outline: none;
+}
+.newsletter button {
+    padding: 12px 25px;
+    border-radius: 0 30px 30px 0;
+    border: none;
+    background: #16a34a;
+    color: white;
+    cursor: pointer;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Container for the Grid */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 20px 0;
+}
+
+/* The Image Box */
+.game-card-image {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Fixed height for industrial uniformity */
+    overflow: hidden;
+    background-color: #111; /* Fallback color */
+}
+
+.game-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This prevents images from stretching */
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover Effect: Zoom into the game world */
+.game-card:hover .game-card-image img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* Status Badge Positioning */
+.badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
+/* Hero Video */
+#hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.featured-game {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.featured-game-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.featured-game-card img {
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.featured-info {
+    max-width: 600px;
+    text-align: left;
+}
+
+.featured-info h3 {
+    color: #38bdf8;
+    font-size: 28px;
+}
+
+.featured-info p {
+    color: #e2e8f0;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* 1. Ensure the page takes up the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Push the footer to the bottom */
+/* This works by making the main content area expand to fill space */
+main, .games-section { 
+    flex: 1; 
+}
+
+/* 3. Footer Alignment */
+footer {
+    background-color: #050505; /* Deep black for industrial feel */
+    border-top: 1px solid #222;
+    padding: 40px 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column; /* Stack text above social links */
+    align-items: center;    /* Center horizontally */
+    justify-content: center;
+    text-align: center;
+    gap: 15px;             /* Space between copyright and social */
+}
+
+footer p {
+    color: #888;
+    margin: 0;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* 4. Social Links Styling */
+.social {
+    display: flex;
+    gap: 20px;
+}
+
+.social a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.social a:hover {
+    color: #ff6600; /* Awadhya Orange */
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* full viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
+
+.hero video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* maintain aspect ratio and cover hero */
+  transform: translate(-50%, -50%);
+  z-index: -2; /* behind content */
+}
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* particles behind content but above video */
+}
+
+.swiper{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+}
+
+.swiper-slide img{
+    width:100%;
+    border-radius:8px;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+    color:white;
+}
+
+/* BACKGROUND SLIDER */
+
+.bg-slider{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+overflow:hidden;
+}
+
+.bg-slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:opacity 1.5s ease-in-out;
+}
+
+.bg-slide.active{
+opacity:1;
+}
+
+/* dark overlay */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:-1;
+}
+
+.view-btn{
+display:inline-block;
+padding:12px 25px;
+background:linear-gradient(45deg,#0055ff,#008cff);
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+letter-spacing:1px;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.view-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}

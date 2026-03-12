@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,49 +9,137 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+<style>
+
+.page-header{
+text-align:center;
+padding:60px 20px 40px;
+background:#0f172a;
+color:#38bdf8;
+}
+
+.page-header h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.page-header p{
+font-size:18px;
+color:#cbd5e1;
+}
+
+.games-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+max-width:1200px;
+margin:50px auto;
+padding:0 20px;
+}
+
+.game-card{
+background:#1e293b;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+transition:0.3s;
+}
+
+.game-card:hover{
+transform:translateY(-5px);
+}
+
+.game-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+display:block;
+}
+
+.game-card-content{
+padding:20px;
+}
+
+.game-card-content h3{
+font-size:22px;
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+.game-card-content p{
+font-size:14px;
+color:#cbd5e1;
+margin-bottom:15px;
+}
+
+.btn-view{
+display:inline-block;
+background:#2563eb;
+color:#fff;
+padding:8px 20px;
+border-radius:25px;
+text-decoration:none;
+}
+
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+background:#38bdf8;
+color:#0f172a;
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+footer{
+text-align:center;
+padding:40px 20px;
+background:#0f172a;
+color:#cbd5e1;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
 
 <nav class="navbar">
-
 <div class="container">
-
 <h2 class="logo">Awadhya Games Studio</h2>
 
 <ul class="nav-links">
-
 <li><a href="/">Home</a></li>
 <li><a href="/games">Games</a></li>
 <li><a href="/blog">Blog</a></li>
 <li><a href="/about">About</a></li>
 <li><a href="/contact">Contact</a></li>
-
 </ul>
 
 </div>
-
 </nav>
 
 
-<!-- ================= PAGE HEADER ================= -->
+<!-- PAGE HEADER -->
 
 <section class="page-header">
-
 <h1>Our Games</h1>
-
-<p>Explore games developed by Awadhya Games Studio</p>
-
+<p>Explore immersive games developed by Awadhya Games Studio</p>
 </section>
 
 
-<!-- ================= GAMES GRID ================= -->
+<!-- GAMES GRID -->
 
 <section class="games-section">
-
-<div class="container">
 
 <div class="games-grid">
 
@@ -60,15 +147,30 @@
 
 <div class="game-card">
 
-<img src="{{ url_for('static', filename=game.cover.replace('static/','')) }}" alt="{{ game.title }}">
+<div style="position:relative">
+
+{% if game.cover %}
+<img src="{{ url_for('static', filename='uploads/covers/' + game.cover) }}" alt="{{game.title}}">
+{% else %}
+<img src="{{ url_for('static', filename='images/default-game.png') }}">
+{% endif %}
+
+<span class="badge">{{ game.status }}</span>
+
+</div>
 
 <div class="game-card-content">
 
 <h3>{{ game.title }}</h3>
 
-<p>{{ game.description[:120] }}...</p>
+<p>
+{{ game.description[:120] }}
+{% if game.description|length > 120 %}...{% endif %}
+</p>
 
-<a href="/game/{{ game.id }}" class="btn-view">View Game</a>
+<a href="{{ url_for('game_detail', id=game.id) }}" class="view-btn">
+    View Game
+</a>
 
 </div>
 
@@ -78,28 +180,16 @@
 
 </div>
 
-</div>
-
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer>
 
 <p>© 2026 Awadhya Games Studio</p>
 
-<div class="social">
-
-<a href="#">YouTube</a>
-<a href="#">LinkedIn</a>
-<a href="#">Twitter</a>
-<a href="#">Itch.io</a>
-
-</div>
-
 </footer>
 
 </body>
-
 </html>

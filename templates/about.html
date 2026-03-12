@@ -1,12 +1,8 @@
-{% extends "base.html" %}
+{% extends "base_about.html" %}
 
 {% block content %}
-<!--Image Slider-->
 
-
-
-
-
+<!--Disabled 
 <h2>About Studio</h2>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -17,13 +13,29 @@
 
 <span class="logo-text">Awadhya Games Studio</span>
 
-</div>
+</div>  -->
+
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+  <video autoplay muted loop>
+    <source src="{{ url_for('static', filename='videos/bg.mp4') }}" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <h1>Welcome to Awadhya Games Studio</h1>
+    <p>Creating immersive and engaging games</p>
+    <a href="/games" class="btn btn-primary">Explore Games</a>
+  </div>
+</section>
+
 
 <p>
 Awadhya Games Studio is an independent game development studio
 founded by Sagar Karosiya. The studio focuses on creating immersive
 games combining storytelling, mythology, and modern gameplay systems.
 </p>
+
+<!---
 <footer>
 
 <p>© 2026 Awadhya Games Studio</p>
@@ -37,6 +49,6 @@ games combining storytelling, mythology, and modern gameplay systems.
 
 </div>
 
-</footer>
+</footer> -->
 
 {% endblock %}

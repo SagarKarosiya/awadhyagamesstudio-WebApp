@@ -1,19 +1,118 @@
-<h2>Add Post</h2>
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Add Blog Post</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+<style>
+
+body{
+    font-family: Arial;
+    background:#0f0f0f;
+    color:white;
+    margin:0;
+}
+
+.container{
+    max-width:700px;
+    margin:50px auto;
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:8px;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    margin-bottom:20px;
+    border:none;
+    border-radius:5px;
+    background:#2a2a2a;
+    color:white;
+}
+
+textarea{
+    resize:vertical;
+}
+
+label{
+    font-size:14px;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+button{
+    background:#ff3c3c;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e12f2f;
+}
+
+.back{
+    display:inline-block;
+    margin-top:15px;
+    color:#aaa;
+    text-decoration:none;
+}
+
+.back:hover{
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📰 Add Blog Post</h2>
+
 <form method="POST" enctype="multipart/form-data">
 
-<input type="text" name="title" placeholder="Game Title" required>
+<label>Post Title</label>
+<input type="text" name="title" placeholder="Enter post title" required>
 
-<textarea name="description" placeholder="Game Description"></textarea>
+<label>Post Content</label>
+<textarea name="description" rows="8" placeholder="Write your blog content..."></textarea>
 
-<input type="text" name="trailer" placeholder="Trailer URL">
+<label>Trailer / Video URL (optional)</label>
+<input type="text" name="trailer" placeholder="YouTube or video link">
 
-<label>Post </label>
-
+<label>Post Cover Image</label>
 <input type="file" name="cover">
 
-<button type="submit">Post </button>
+<div class="checkbox">
+<input type="checkbox" name="featured" value="1">
+<label>Featured Post</label>
+</div>
+
+<button type="submit">Publish Post</button>
 
 </form>
+
+<a class="back" href="/dashboard">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

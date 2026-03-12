@@ -1,3 +1,12 @@
+<style>
+  .game-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+</style>
 <h2>Add Game</h2>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -11,6 +20,27 @@
 <input type="text" name="trailer" placeholder="Trailer URL">
 
 <label>Game Cover</label>
+
+
+<label>
+    <input type="checkbox" name="featured">
+    Featured Game
+</label>
+
+<!-- Image Preview -->
+<input type="file" name="cover" onchange="previewImage(event)">
+
+<img id="preview" style="max-width:200px;margin-top:10px;">
+
+<script>
+function previewImage(event){
+    const reader = new FileReader();
+    reader.onload = function(){
+        document.getElementById("preview").src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>
 
 <input type="file" name="cover">
 

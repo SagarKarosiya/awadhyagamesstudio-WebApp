@@ -2,14 +2,7 @@
 
 {% block content %}
 
-<!--Image Slider-->
-<div class="game-gallery">
 
-<img src="/{{game.image1}}">
-<img src="/{{game.image2}}">
-<img src="/{{game.image3}}">
-
-</div>
 
 <section class="page-header">
     
@@ -27,7 +20,7 @@
 
 <h3>{{ post.title }}</h3>
 
-<p>{{ post.content[:150] }}...</p>
+<p>{{ post.description[:150] }}...</p>
 
 <a href="/blog" class="btn-view">Read More</a>
 
